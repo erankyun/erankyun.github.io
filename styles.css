@@ -1016,11 +1016,4 @@ a:focus-visible {
   .scroll-progress__walker.is-walking {
     animation: none;
   }
-
-  .masthead,
-  .masthead__tools,
-  .page-shell,
-  .scroll-progress {
-    transition: none;
-  }
 }

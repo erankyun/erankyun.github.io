@@ -28,6 +28,11 @@
         // settled (fonts, pillars, and section labels), so nothing shifts
         // while the fade runs.
         root.classList.add("is-page-loading");
+        const loadingStartedAt = performance.now();
+        // Keep the loading state visible long enough to be perceived even on
+        // fast, fully-cached mobile loads that finish before the first paint.
+        const minimumHiddenTime = 550;
+        const settleTime = 150;
         let pageLoaded = document.readyState === "complete";
         let layoutReady = false;
         let revealed = false;
@@ -38,7 +43,9 @@
           // Let the final layout paint before starting the opacity fade.
           requestAnimationFrame(() => {
             requestAnimationFrame(() => {
-              window.setTimeout(() => root.classList.remove("is-page-loading"), 150);
+              const elapsed = performance.now() - loadingStartedAt;
+              const wait = Math.max(settleTime, minimumHiddenTime - elapsed);
+              window.setTimeout(() => root.classList.remove("is-page-loading"), wait);
             });
           });
         };
@@ -76,7 +83,7 @@
         }, 5000);
       })();
     </script>
-    <link rel="stylesheet" href="../styles.css?v=b8c495395d">
+    <link rel="stylesheet" href="../styles.css?v=856e953cc8">
   </head>
   <body>
     <header class="masthead">
@@ -277,7 +284,7 @@
     </div>
 
     <script
-      src="../scroll.js?v=b8c495395d"
+      src="../scroll.js?v=856e953cc8"
       data-pillar-assets="../pillar1/"
       type="module"
     ></script>
