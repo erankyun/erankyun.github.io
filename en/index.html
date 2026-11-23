@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#100C08">
+    <meta
+      name="description"
+      content="The personal website of Hamlet Petrosyan."
+    >
+    <title>Hamlet Petrosyan</title>
+    <script>
+      (() => {
+        let theme = "dark";
+        try {
+          if (localStorage.getItem("theme") === "light") theme = "light";
+        } catch {
+          // Storage can be unavailable in private or restricted contexts.
+        }
+        document.documentElement.dataset.theme = theme;
+        document
+          .querySelector('meta[name="theme-color"]')
+          ?.setAttribute("content", theme === "light" ? "#F4EFE6" : "#100C08");
+      })();
+    </script>
+    <link rel="stylesheet" href="../styles.css?v=1263e4d17e">
+  </head>
+  <body>
+    <header class="masthead">
+      <h1 class="masthead__name">Hamlet Petrosyan</h1>
+      <div class="masthead__tools">
+        <button
+          class="theme-toggle"
+          type="button"
+          data-theme-toggle
+          aria-label="Switch to light mode"
+          aria-pressed="false"
+        >
+          <svg class="theme-toggle__sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="3.75"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+          </svg>
+          <svg class="theme-toggle__moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M20 15.5A8.5 8.5 0 0 1 8.5 4a8.5 8.5 0 1 0 11.5 11.5Z"></path>
+          </svg>
+        </button>
+        <nav class="language-switcher" aria-label="Language">
+          <a class="language-switcher__option" href="./" lang="en" aria-current="page">en</a>
+          <a class="language-switcher__option" href="../hy/" lang="hy" aria-current="false">հայ</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-shell" id="page-scroll" tabindex="0" aria-label="Page sections">
+      <div class="page-grid">
+        <section class="panel panel--about" aria-labelledby="about-heading">
+          <header class="panel__heading">
+            <h2 id="about-heading" tabindex="-1">About me</h2>
+          </header>
+          <div class="panel__body" data-pillar-body>
+            <span class="panel__pillar" aria-hidden="true"></span>
+            <div class="panel__copy"><p>I am a student at Yerevan State University, majoring in Informatics (Computer Science). I work on machine learning, algorithms, and competitive programming. I have participated in the IOI, IMO, IMC, and the ICPC World Finals, and I am currently exploring neural-network-guided approaches to automated theorem proving. I recently created an Armenian typeface and resumed playing music. This site is a brief introduction to me and my work.</p>
+<div class="heading-group"><h3 id="education">Education</h3>
+<article class="entry">
+  <div class="entry__main">
+    <h3 class="entry__title">Yerevan State University</h3>
+    <div class="entry__subtitle">Bachelor&#39;s degree in Informatics and Computer Science</div>
+  </div>
+  <div class="entry__period">Sep 2023 – present</div>
+</article></div>
+<article class="entry">
+  <div class="entry__main">
+    <h3 class="entry__title">&quot;Quantum&quot; College</h3>
+    <div class="entry__subtitle">Middle and High School</div>
+  </div>
+  <div class="entry__period">Sep 2017 – May 2023</div>
+</article>
+<div class="heading-group"><h3 id="olympiad-achievements">Olympiad achievements</h3>
+<h5 id="university">University</h5>
+<ul class="medal-list"><li class="medal-list__item medal-list__item--blue">
+  <svg class="medal-list__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M12 18c4.41 0 8-3.59 8-8s-3.59-8-8-8s-8 3.59-8 8s3.59 8 8 8"/>
+  <path fill="currentColor" d="M7 17.48V21c0 .35.18.67.47.85s.66.2.97.04l3.55-1.78l3.55 1.78a.997.997 0 0 0 1.45-.89v-3.52c-1.43.96-3.15 1.52-5 1.52s-3.57-.56-5-1.52Z"/>
+</svg>
+  <span>Member of the YSU 6741426 team participating in the ICPC 2026 World Finals</span>
+</li>
+<li class="medal-list__item medal-list__item--blue">
+  <svg class="medal-list__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M12 18c4.41 0 8-3.59 8-8s-3.59-8-8-8s-8 3.59-8 8s3.59 8 8 8"/>
+  <path fill="currentColor" d="M7 17.48V21c0 .35.18.67.47.85s.66.2.97.04l3.55-1.78l3.55 1.78a.997.997 0 0 0 1.45-.89v-3.52c-1.43.96-3.15 1.52-5 1.52s-3.57-.56-5-1.52Z"/>
+</svg>
+  <span>Member of the YSU SD3 team, 76th place at the ICPC 2024 World Finals</span>
+</li>
+<li class="medal-list__item medal-list__item--silver">
+  <svg class="medal-list__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M12 18c4.41 0 8-3.59 8-8s-3.59-8-8-8s-8 3.59-8 8s3.59 8 8 8"/>
+  <path fill="currentColor" d="M7 17.48V21c0 .35.18.67.47.85s.66.2.97.04l3.55-1.78l3.55 1.78a.997.997 0 0 0 1.45-.89v-3.52c-1.43.96-3.15 1.52-5 1.52s-3.57-.56-5-1.52Z"/>
+</svg>
+  <span>Silver medalist at IMC (International Mathematics Competition) 2024</span>
+</li></ul></div>
+<div class="heading-group"><h5 id="school">School</h5>
+<ul class="medal-list"><li class="medal-list__item medal-list__item--bronze">
+  <svg class="medal-list__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M12 18c4.41 0 8-3.59 8-8s-3.59-8-8-8s-8 3.59-8 8s3.59 8 8 8"/>
+  <path fill="currentColor" d="M7 17.48V21c0 .35.18.67.47.85s.66.2.97.04l3.55-1.78l3.55 1.78a.997.997 0 0 0 1.45-.89v-3.52c-1.43.96-3.15 1.52-5 1.52s-3.57-.56-5-1.52Z"/>
+</svg>
+  <span>Bronze medalist at IMO (International Mathematical Olympiad) 2024</span>
+</li>
+<li class="medal-list__item medal-list__item--bronze">
+  <svg class="medal-list__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M12 18c4.41 0 8-3.59 8-8s-3.59-8-8-8s-8 3.59-8 8s3.59 8 8 8"/>
+  <path fill="currentColor" d="M7 17.48V21c0 .35.18.67.47.85s.66.2.97.04l3.55-1.78l3.55 1.78a.997.997 0 0 0 1.45-.89v-3.52c-1.43.96-3.15 1.52-5 1.52s-3.57-.56-5-1.52Z"/>
+</svg>
+  <span>Bronze medalist at IOI (International Olympiad in Informatics) 2023</span>
+</li></ul></div>
+<div class="heading-group"><h3 id="competitive-programming">Competitive programming</h3>
+<article class="entry">
+  <div class="entry__main">
+    <h3 class="entry__title">Member of the Committee of Armenian School Informatics Olympiad</h3>
+    
+  </div>
+  <div class="entry__period">Sep 2024 – present</div>
+</article></div>
+<p>codeforces.com - <a href="https://codeforces.com/profile/erankyun">erankyun</a> (highest rating: 2245, master)</p>
+<p>atcoder.jp - <a href="https://atcoder.jp/users/HamletPetrosyan">HamletPetrosyan</a></p>
+<div class="heading-group"><h3 id="awards">Awards</h3>
+<ul class="medal-list"><li class="medal-list__item medal-list__item--silver">
+  <svg class="medal-list__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M12 18c4.41 0 8-3.59 8-8s-3.59-8-8-8s-8 3.59-8 8s3.59 8 8 8"/>
+  <path fill="currentColor" d="M7 17.48V21c0 .35.18.67.47.85s.66.2.97.04l3.55-1.78l3.55 1.78a.997.997 0 0 0 1.45-.89v-3.52c-1.43.96-3.15 1.52-5 1.52s-3.57-.56-5-1.52Z"/>
+</svg>
+  <span>YSU silver commemorative medal (for olympiad results)</span>
+</li></ul></div></div>
+          </div>
+        </section>
+
+        <section class="panel panel--projects" aria-labelledby="projects-heading">
+          <header class="panel__heading">
+            <h2 id="projects-heading" tabindex="-1">Projects</h2>
+          </header>
+          <div class="panel__body" data-pillar-body>
+            <span class="panel__pillar" aria-hidden="true"></span>
+            <div class="panel__copy"><div class="heading-group"><h4 id="academic">Academic</h4>
+<article class="project-card project-card--static project-card--text-only">
+  <span class="project-card__content">
+    <span class="project-card__title">Accelerating Automated Theorem-Proving Programs with Neural Guidance</span>
+    <span class="project-card__description">Ongoing research</span>
+    
+  </span></article></div>
+<div class="heading-group"><h4 id="personal">Personal</h4>
+<a class="project-card project-card--text-only" href="https://erankyun.github.io/Sharqayin/">
+  <span class="project-card__content">
+    <span class="project-card__title">&quot;Sharqayin&quot; Typeface</span>
+    <span class="project-card__description">Armenian letters, numerals, and selected punctuation marks</span>
+    <span class="project-card__specimen" style="font-family: &quot;Sharqayin&quot;">Շարքային Աա Բբ Գգ Դդ Եե Զզ Էէ Ըը 0123456789</span>
+  </span></a></div>
+<a class="project-card project-card--text-only" href="https://hamletpetrosyan.am/">
+  <span class="project-card__content">
+    <span class="project-card__title">This Website</span>
+    <span class="project-card__description">Presenting myself, pillar sketching</span>
+    
+  </span></a></div>
+          </div>
+        </section>
+
+        <section class="panel panel--lastread" aria-labelledby="lastread-heading">
+          <header class="panel__heading">
+            <h2 id="lastread-heading" tabindex="-1">Last Read Books</h2>
+          </header>
+          <div class="panel__body" data-pillar-body>
+            <span class="panel__pillar" aria-hidden="true"></span>
+            <div class="panel__copy"><ul class="book-list"><li class="book">
+  <span class="book__title">Improv Wisdom</span>
+  <span class="book__author">Patricia Ryan Madson</span>
+  
+</li>
+<li class="book">
+  <span class="book__title">The Other Classical Musics: Fifteen Great Traditions</span>
+  <span class="book__author">Michael Church</span>
+  <span class="book__status">(paused)</span>
+</li>
+<li class="book">
+  <span class="book__title">We Need To Talk: How to Have Conversations that Matter</span>
+  <span class="book__author">Celeste Headlee</span>
+  
+</li>
+<li class="book">
+  <span class="book__title">Nexus: A Brief History of Information Networks from the Stone...</span>
+  <span class="book__author">Yuval Noah Harari</span>
+  
+</li>
+<li class="book">
+  <span class="book__title">Ashes of Our Fathers: Inside the Fall of Nagorno-Karabakh</span>
+  <span class="book__author">Gabriel Gavin</span>
+  
+</li></ul></div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <div class="scroll-progress" id="scroll-progress">
+      <div
+        class="scroll-progress__sections"
+        id="scroll-progress-sections"
+        role="group"
+        aria-label="Page sections"
+      ></div>
+      <span
+        class="scroll-progress__track"
+        id="scroll-progress-track"
+        role="progressbar"
+        aria-label="Reading progress"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="0"
+      >
+        <span class="scroll-progress__fill"></span>
+      </span>
+      <span class="scroll-progress__scrubber" aria-hidden="true"></span>
+      <svg class="scroll-progress__walker" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="m7.617 8.712 3.205-2.328A2 2 0 0 1 12.065 6a2.62 2.62 0 0 1 2.427 1.82q.279.875.51 1.181A5 5 0 0 0 19 11v2a6.99 6.99 0 0 1-5.401-2.547l-.698 3.956 2.061 1.729 2.223 6.108-1.88.684-2.039-5.604-3.39-2.845a2 2 0 0 1-.714-1.904l.509-2.885-.677.492-2.127 2.928-1.618-1.176L7.6 8.7zM13.5 5.5a2 2 0 1 1 0-4 2 2 0 0 1 0 4m-2.97 13.181-3.214 3.83-1.532-1.285 2.975-3.546.746-2.18 1.791 1.5z" />
+      </svg>
+    </div>
+
+    <script
+      src="../scroll.js?v=1263e4d17e"
+      data-pillar-assets="../pillar1/"
+      type="module"
+    ></script>
+  </body>
+</html>
