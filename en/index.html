@@ -53,7 +53,7 @@
         // Reveal only after the page has fully loaded and the layout has
         // settled (fonts, pillars, and section labels), so nothing shifts
         // while the fade runs.
-        root.classList.add("is-page-loading", "is-booting");
+        root.classList.add("is-page-loading", "is-booting", "has-js");
         const loadingStartedAt = performance.now();
         // Keep the loading state visible long enough to be perceived even on
         // fast, fully-cached mobile loads that finish before the first paint.
@@ -110,11 +110,58 @@
       })();
     </script>
     <link
+      id="site-styles"
       rel="stylesheet"
-      href="../styles.css?v=856e953cc8"
-      onload="document.documentElement.classList.remove('is-booting')"
-      onerror="document.documentElement.classList.remove('is-booting', 'is-page-loading')"
+      href="../styles.css?v=b91d66da3b"
     >
+    <script>
+      (() => {
+        const root = document.documentElement;
+        const stylesheet = document.getElementById("site-styles");
+        let nameRevealed = false;
+
+        const revealName = () => {
+          if (nameRevealed) return;
+          nameRevealed = true;
+          root.classList.add("is-name-ready");
+        };
+
+        const loadNameFont = () => {
+          let loading;
+          try {
+            loading = document.fonts?.load('italic 400 1em "GHEA Mariam"');
+          } catch {
+            loading = null;
+          }
+
+          if (!loading) {
+            revealName();
+            return;
+          }
+
+          loading.then(revealName, revealName);
+          // Never leave the name hidden if the font request stalls.
+          window.setTimeout(revealName, 5000);
+        };
+
+        const onStylesReady = () => {
+          root.classList.remove("is-booting");
+          loadNameFont();
+        };
+
+        const onStylesError = () => {
+          root.classList.remove("is-booting", "is-page-loading");
+          revealName();
+        };
+
+        if (stylesheet.sheet) {
+          onStylesReady();
+        } else {
+          stylesheet.addEventListener("load", onStylesReady, { once: true });
+          stylesheet.addEventListener("error", onStylesError, { once: true });
+        }
+      })();
+    </script>
   </head>
   <body>
     <header class="masthead">
@@ -315,7 +362,7 @@
     </div>
 
     <script
-      src="../scroll.js?v=856e953cc8"
+      src="../scroll.js?v=b91d66da3b"
       data-pillar-assets="../pillar1/"
       type="module"
     ></script>

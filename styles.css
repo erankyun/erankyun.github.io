@@ -173,6 +173,12 @@ html.is-page-loading .masthead {
   border-bottom-color: transparent;
 }
 
+/* The name is shown only once its italic face is loaded, so it never
+   switches from a fallback serif to GHEA Mariam. */
+html.has-js:not(.is-name-ready) .masthead__name {
+  visibility: hidden;
+}
+
 html.is-page-loading .masthead__tools,
 html.is-page-loading .page-shell,
 html.is-page-loading .scroll-progress {
