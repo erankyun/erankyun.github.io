@@ -620,7 +620,7 @@ async function initialize() {
 
   const [, parts] = await Promise.all([
     document.fonts?.ready || Promise.resolve(),
-    loadPillarParts(assetBase),
+    loadPillarParts(assetBase, moduleVersion),
   ]);
   pillarParts = parts;
   buildSectionLabels();

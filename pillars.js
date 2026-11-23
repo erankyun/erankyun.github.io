@@ -46,10 +46,11 @@ function parsePart(name, source, text) {
   };
 }
 
-export async function loadPillarParts(assetBase) {
+export async function loadPillarParts(assetBase, version = "") {
+  const suffix = version ? `?v=${encodeURIComponent(version)}` : "";
   const entries = await Promise.all(
     Object.entries(PART_SOURCES).map(async ([name, source]) => {
-      const response = await fetch(`${assetBase}${source.file}`);
+      const response = await fetch(`${assetBase}${source.file}${suffix}`);
       if (!response.ok) {
         throw new Error(`Could not load pillar component: ${source.file}`);
       }
