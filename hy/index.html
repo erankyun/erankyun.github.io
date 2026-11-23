@@ -11,19 +11,29 @@
     <title>Համլետ Պետրոսյան</title>
     <script>
       (() => {
+        const root = document.documentElement;
         let theme = "dark";
         try {
           if (localStorage.getItem("theme") === "light") theme = "light";
         } catch {
           // Storage can be unavailable in private or restricted contexts.
         }
-        document.documentElement.dataset.theme = theme;
+        root.dataset.theme = theme;
         document
           .querySelector('meta[name="theme-color"]')
           ?.setAttribute("content", theme === "light" ? "#F4EFE6" : "#100C08");
+
+        // Hide the name only when JavaScript can reveal it after the page loads.
+        root.classList.add("is-page-loading");
+        const revealName = () => root.classList.remove("is-page-loading");
+        if (document.readyState === "complete") {
+          revealName();
+        } else {
+          window.addEventListener("load", revealName, { once: true });
+        }
       })();
     </script>
-    <link rel="stylesheet" href="../styles.css?v=b834e09687">
+    <link rel="stylesheet" href="../styles.css?v=5197ec9661">
   </head>
   <body>
     <header class="masthead">
@@ -224,7 +234,7 @@
     </div>
 
     <script
-      src="../scroll.js?v=b834e09687"
+      src="../scroll.js?v=5197ec9661"
       data-pillar-assets="../pillar1/"
       type="module"
     ></script>

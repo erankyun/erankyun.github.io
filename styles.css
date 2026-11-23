@@ -160,6 +160,11 @@ body {
   letter-spacing: -0.035em;
   line-height: 1.15;
   text-align: left;
+  transition: opacity 600ms ease-out;
+}
+
+html.is-page-loading .masthead__name {
+  opacity: 0;
 }
 
 .masthead__tools {
@@ -348,19 +353,6 @@ body {
   width: 100%;
   height: 100%;
   color: var(--color-structure);
-  animation: pillar-reveal 260ms ease-out both;
-}
-
-@keyframes pillar-reveal {
-  from {
-    opacity: 0;
-    transform: translateY(3px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .panel__copy {
@@ -1013,7 +1005,7 @@ a:focus-visible {
     animation: none;
   }
 
-  .panel__pillar-svg {
-    animation: none;
+  .masthead__name {
+    transition: none;
   }
 }
