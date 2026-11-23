@@ -9,6 +9,32 @@
       content="The personal website of Hamlet Petrosyan."
     >
     <title>Hamlet Petrosyan</title>
+    <style>
+      /* Critical boot styles: avoid a flash of unstyled content while the
+         stylesheet loads. The page is hidden until the stylesheet applies,
+         and the content is already transparent so it cannot fade out first. */
+      html {
+        background-color: #100C08;
+      }
+
+      html[data-theme="light"] {
+        background-color: #F4EFE6;
+      }
+
+      html.is-booting body {
+        visibility: hidden;
+      }
+
+      html.is-page-loading .masthead__tools,
+      html.is-page-loading .page-shell,
+      html.is-page-loading .scroll-progress {
+        opacity: 0;
+      }
+
+      html.is-page-loading .masthead {
+        border-bottom-color: transparent;
+      }
+    </style>
     <script>
       (() => {
         const root = document.documentElement;
@@ -27,7 +53,7 @@
         // Reveal only after the page has fully loaded and the layout has
         // settled (fonts, pillars, and section labels), so nothing shifts
         // while the fade runs.
-        root.classList.add("is-page-loading");
+        root.classList.add("is-page-loading", "is-booting");
         const loadingStartedAt = performance.now();
         // Keep the loading state visible long enough to be perceived even on
         // fast, fully-cached mobile loads that finish before the first paint.
@@ -83,7 +109,12 @@
         }, 5000);
       })();
     </script>
-    <link rel="stylesheet" href="../styles.css?v=856e953cc8">
+    <link
+      rel="stylesheet"
+      href="../styles.css?v=856e953cc8"
+      onload="document.documentElement.classList.remove('is-booting')"
+      onerror="document.documentElement.classList.remove('is-booting', 'is-page-loading')"
+    >
   </head>
   <body>
     <header class="masthead">
