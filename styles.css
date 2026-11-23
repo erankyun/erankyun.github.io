@@ -149,6 +149,7 @@ body {
   justify-content: flex-start;
   padding: 0 1rem;
   border-bottom: var(--border-width) solid var(--color-structure);
+  transition: border-bottom-color 600ms ease-out;
 }
 
 .masthead__name {
@@ -166,6 +167,10 @@ body {
 .page-shell,
 .scroll-progress {
   transition: opacity 600ms ease-out;
+}
+
+html.is-page-loading .masthead {
+  border-bottom-color: transparent;
 }
 
 html.is-page-loading .masthead__tools,
@@ -1012,6 +1017,7 @@ a:focus-visible {
     animation: none;
   }
 
+  .masthead,
   .masthead__tools,
   .page-shell,
   .scroll-progress {

@@ -638,4 +638,6 @@ async function initialize() {
 
 initialize().catch((error) => {
   console.error("The horizontal reading layout could not be initialized.", error);
+}).finally(() => {
+  window.dispatchEvent(new Event("page-ready"));
 });

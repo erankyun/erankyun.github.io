@@ -23,18 +23,60 @@
           .querySelector('meta[name="theme-color"]')
           ?.setAttribute("content", theme === "light" ? "#F4EFE6" : "#100C08");
 
-        // Keep the name visible while the rest of the page is hidden,
-        // then fade the page in once everything has loaded.
+        // Keep the name visible while the rest of the page is hidden.
+        // Reveal only after the page has fully loaded and the layout has
+        // settled (fonts, pillars, and section labels), so nothing shifts
+        // while the fade runs.
         root.classList.add("is-page-loading");
-        const revealPage = () => root.classList.remove("is-page-loading");
-        if (document.readyState === "complete") {
-          revealPage();
-        } else {
-          window.addEventListener("load", revealPage, { once: true });
+        let pageLoaded = document.readyState === "complete";
+        let layoutReady = false;
+        let revealed = false;
+
+        const revealPage = () => {
+          if (revealed) return;
+          revealed = true;
+          // Let the final layout paint before starting the opacity fade.
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              window.setTimeout(() => root.classList.remove("is-page-loading"), 150);
+            });
+          });
+        };
+
+        const maybeReveal = () => {
+          if (pageLoaded && layoutReady) revealPage();
+        };
+
+        if (pageLoaded) maybeReveal();
+        else {
+          window.addEventListener(
+            "load",
+            () => {
+              pageLoaded = true;
+              maybeReveal();
+            },
+            { once: true },
+          );
         }
+
+        window.addEventListener(
+          "page-ready",
+          () => {
+            layoutReady = true;
+            maybeReveal();
+          },
+          { once: true },
+        );
+
+        // Failsafe: never leave the page hidden if initialization stalls.
+        window.setTimeout(() => {
+          pageLoaded = true;
+          layoutReady = true;
+          revealPage();
+        }, 5000);
       })();
     </script>
-    <link rel="stylesheet" href="../styles.css?v=a7cf703219">
+    <link rel="stylesheet" href="../styles.css?v=b8c495395d">
   </head>
   <body>
     <header class="masthead">
@@ -235,7 +277,7 @@
     </div>
 
     <script
-      src="../scroll.js?v=a7cf703219"
+      src="../scroll.js?v=b8c495395d"
       data-pillar-assets="../pillar1/"
       type="module"
     ></script>
