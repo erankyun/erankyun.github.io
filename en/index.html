@@ -23,17 +23,18 @@
           .querySelector('meta[name="theme-color"]')
           ?.setAttribute("content", theme === "light" ? "#F4EFE6" : "#100C08");
 
-        // Hide the name only when JavaScript can reveal it after the page loads.
+        // Keep the name visible while the rest of the page is hidden,
+        // then fade the page in once everything has loaded.
         root.classList.add("is-page-loading");
-        const revealName = () => root.classList.remove("is-page-loading");
+        const revealPage = () => root.classList.remove("is-page-loading");
         if (document.readyState === "complete") {
-          revealName();
+          revealPage();
         } else {
-          window.addEventListener("load", revealName, { once: true });
+          window.addEventListener("load", revealPage, { once: true });
         }
       })();
     </script>
-    <link rel="stylesheet" href="../styles.css?v=5197ec9661">
+    <link rel="stylesheet" href="../styles.css?v=a7cf703219">
   </head>
   <body>
     <header class="masthead">
@@ -180,14 +181,14 @@
           <div class="panel__body" data-pillar-body>
             <span class="panel__pillar" aria-hidden="true"></span>
             <div class="panel__copy"><ul class="book-list"><li class="book">
-  <span class="book__title">Improv Wisdom</span>
-  <span class="book__author">Patricia Ryan Madson</span>
+  <span class="book__title">What Happened to Liberal Democracy? Remaking a Politics of Shared Prosperity</span>
+  <span class="book__author">Daron Acemoglu</span>
   
 </li>
 <li class="book">
-  <span class="book__title">The Other Classical Musics: Fifteen Great Traditions</span>
-  <span class="book__author">Michael Church</span>
-  <span class="book__status">(paused)</span>
+  <span class="book__title">Improv Wisdom</span>
+  <span class="book__author">Patricia Ryan Madson</span>
+  
 </li>
 <li class="book">
   <span class="book__title">We Need To Talk: How to Have Conversations that Matter</span>
@@ -234,7 +235,7 @@
     </div>
 
     <script
-      src="../scroll.js?v=5197ec9661"
+      src="../scroll.js?v=a7cf703219"
       data-pillar-assets="../pillar1/"
       type="module"
     ></script>

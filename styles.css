@@ -160,10 +160,17 @@ body {
   letter-spacing: -0.035em;
   line-height: 1.15;
   text-align: left;
+}
+
+.masthead__tools,
+.page-shell,
+.scroll-progress {
   transition: opacity 600ms ease-out;
 }
 
-html.is-page-loading .masthead__name {
+html.is-page-loading .masthead__tools,
+html.is-page-loading .page-shell,
+html.is-page-loading .scroll-progress {
   opacity: 0;
 }
 
@@ -1005,7 +1012,9 @@ a:focus-visible {
     animation: none;
   }
 
-  .masthead__name {
+  .masthead__tools,
+  .page-shell,
+  .scroll-progress {
     transition: none;
   }
 }
